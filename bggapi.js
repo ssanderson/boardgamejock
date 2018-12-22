@@ -1,6 +1,5 @@
 'use strict';
 
-
 const uncle_bill = 'frankthetank0330'
 const base_url = 'https://www.boardgamegeek.com/xmlapi2';
 
@@ -54,13 +53,39 @@ function fetchPlays(username) {
 async function renderTable(divId, username) {
     let plays = await fetchPlays(username)
 
-    let table = document.getElementById(divId);
+    let root = document.getElementById(divId);
     let ix = 0;
     for (let play of plays) {
-        let row = table.insertRow(ix++);
-        row.insertCell(0).innerHTML = play.date;
-        row.insertCell(1).innerHTML = play.game_name;
-        row.insertCell(2).innerHTML = play.comment;
+        let entryRoot = document.createElement('div');
+        root.appendChild(entryRoot);
+        entryRoot.id = 'recent-play-entry'
+
+        let date = document.createElement('div');
+        entryRoot.appendChild(date);
+        date.id = 'recent-play-entry-date'
+        date.innerHTML = play.date;
+
+        let title = document.createElement('div');
+        entryRoot.appendChild(title);
+        title.id = 'recent-play-entry-title'
+        title.innerHTML = play.game_name;
+
+        let thumbnailDiv = document.createElement('div');
+        entryRoot.appendChild(thumbnailDiv);
+        thumbnailDiv.id = 'recent-play-thumbnail'
+
+        let thumbnailLink = document.createElement('a');
+        thumbnailDiv.appendChild(thumbnailLink);
+        thumbnailLink.href = play.link;
+
+        let thumbnail = document.createElement('img')
+        thumbnailLink.appendChild(thumbnail)
+        thumbnail.src = play.thumbnail
+
+        let comment = document.createElement('div');
+        entryRoot.appendChild(comment);
+        comment.id = 'recent-play-comment'
+        comment.innerHTML = play.comment;
     }
 }
 
