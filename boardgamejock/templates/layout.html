@@ -1,9 +1,10 @@
 <!doctype html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
+<script src="{{ '/static/recent_games.js'|url }}"></script>
 <title>{% block title %}News{% endblock %} — boardgamejock</title>
 <body>
-  <div class="page-container">
+  <div class="full-page">
     <header>
       <div class="logo">
         <a href="/">
@@ -15,23 +16,32 @@
         <ul class="nav navbar-nav">
           <li{% if this._path == '/' %} class="active"{% endif
                 %}><a href="{{ '/'|url }}">News</a></li>
-                {% for href, title in [
-                    ['/blog', 'Blog'],
-                    ['/about', 'About']
-                  ]
-                %}
-                  <li{% if this.is_child_of(href) %} class="active"{% endif %}>
-                    <a href="{{ href|url }}">{{ title }}</a>
-                  </li>
-                {% endfor %}
+          {% for href, title in [
+          ['/blog', 'Blog'],
+          ['/about', 'About']
+          ]
+          %}
+          <li{% if this.is_child_of(href) %} class="active"{% endif %}>
+            <a href="{{ href|url }}">{{ title }}</a>
+          </li>
+          {% endfor %}
         </ul>
       </nav>
     </header>
-    <div class="page">
-      {% block body %}{% endblock %}
+    <div class="right-sidebar">
+      <div id="recent-games" class="recent-games">
+        <h2>Recent Games</h2>
+      </div>
     </div>
+    <div class="page-container">
+      <div class="page">
+        {% block body %}{% endblock %}
+      </div>
+    </div>
+
     <footer>
       &copy; Copyright 2018 by Will Frank.
     </footer>
   </div>
+
 </body>

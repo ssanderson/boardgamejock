@@ -50,43 +50,52 @@ function fetchPlays(username) {
     });
 }
 
-async function renderTable(divId, username) {
+async function renderRecentGames(username) {
     let plays = await fetchPlays(username)
 
-    let root = document.getElementById(divId);
+    let root = document.getElementById('recent-games');
+    if (root === null) {
+        console.log('missing recent games root div: "recent-games"');
+        return;
+    }
+
     let ix = 0;
     for (let play of plays) {
         let entryRoot = document.createElement('div');
         root.appendChild(entryRoot);
-        entryRoot.id = 'recent-play-entry'
+        entryRoot.className = 'recent-games-entry';
 
-        let date = document.createElement('div');
+        let date = document.createElement('h3');
         entryRoot.appendChild(date);
-        date.id = 'recent-play-entry-date'
+        date.className = 'recent-games-entry-date';
         date.innerHTML = play.date;
 
-        let title = document.createElement('div');
+        let title = document.createElement('a');
         entryRoot.appendChild(title);
-        title.id = 'recent-play-entry-title'
+        title.className = 'recent-games-entry-title';
+        title.href = play.link;
+
+        let titleName = document.createElement('h4')
+        title.appendChild(titleName);
         title.innerHTML = play.game_name;
 
         let thumbnailDiv = document.createElement('div');
         entryRoot.appendChild(thumbnailDiv);
-        thumbnailDiv.id = 'recent-play-thumbnail'
+        thumbnailDiv.className = 'recent-games-thumbnail';
 
         let thumbnailLink = document.createElement('a');
         thumbnailDiv.appendChild(thumbnailLink);
         thumbnailLink.href = play.link;
 
-        let thumbnail = document.createElement('img')
-        thumbnailLink.appendChild(thumbnail)
-        thumbnail.src = play.thumbnail
+        let thumbnail = document.createElement('img');
+        thumbnailLink.appendChild(thumbnail);
+        thumbnail.src = play.thumbnail;
 
         let comment = document.createElement('div');
         entryRoot.appendChild(comment);
-        comment.id = 'recent-play-comment'
+        comment.className = 'recent-games-comment';
         comment.innerHTML = play.comment;
     }
 }
 
-renderTable('recent-games', uncle_bill);
+renderRecentGames(uncle_bill);
