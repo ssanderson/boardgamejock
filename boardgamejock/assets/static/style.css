@@ -72,3 +72,8 @@ header nav ul li {
     margin: 0 8px 0 0;
     padding: 0;
 }
+
+.pagination {
+    clear: both;
+    padding-top: 20px;
+}
