@@ -1,28 +1,37 @@
 <!doctype html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
-<title>{% block title %}Welcome{% endblock %} — boardgamejock</title>
+<title>{% block title %}News{% endblock %} — boardgamejock</title>
 <body>
-  <header>
-    <h1>BoardGameJock</h1>
-    <nav>
-      <ul class="nav navbar-nav">
-        <li{% if this._path == '/' %} class="active"{% endif
-          %}><a href="{{ '/'|url }}">Welcome</a></li>
-        {% for href, title in [
-          ['/blog', 'Blog'],
-          ['/about', 'About']
-        ] %}
-          <li{% if this.is_child_of(href) %} class="active"{% endif
-            %}><a href="{{ href|url }}">{{ title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </header>
-  <div class="page">
-    {% block body %}{% endblock %}
+  <div class="page-container">
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="/logo.png" alt="BoardGameJock">
+        </a>
+      </div>
+      <div class="site-title">BoardGameJock</div>
+      <nav>
+        <ul class="nav navbar-nav">
+          <li{% if this._path == '/' %} class="active"{% endif
+                %}><a href="{{ '/'|url }}">News</a></li>
+                {% for href, title in [
+                    ['/blog', 'Blog'],
+                    ['/about', 'About']
+                  ]
+                %}
+                  <li{% if this.is_child_of(href) %} class="active"{% endif %}>
+                    <a href="{{ href|url }}">{{ title }}</a>
+                  </li>
+                {% endfor %}
+        </ul>
+      </nav>
+    </header>
+    <div class="page">
+      {% block body %}{% endblock %}
+    </div>
+    <footer>
+      &copy; Copyright 2018 by Will Frank.
+    </footer>
   </div>
-  <footer>
-    &copy; Copyright 2018 by Will Frank.
-  </footer>
 </body>
