@@ -1,2 +1,10 @@
 [project]
 name = BoardGameJock.com
+
+[packages]
+lektor-s3 = 0.5.1
+
+[servers.s3]
+name = S3
+enabled = yes
+target = s3://www.boardgamejock.com
