@@ -8,3 +8,4 @@ lektor-s3 = 0.5.1
 name = S3
 enabled = yes
 target = s3://www.boardgamejock.com
+cloudfront = E3L2KAAWZBA8H5
