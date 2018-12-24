@@ -3,7 +3,6 @@
 <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Zilla+Slab" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<script src="{{ '/static/recent_games.js'|url }}"></script>
 <title>{% block title %}News{% endblock %} — boardgamejock</title>
 <body>
   <div class="body-content">
@@ -41,6 +40,14 @@
       <div class="right-sidebar">
         <div id="recent-games" class="recent-games">
           <div class="sidebar-title">Recent Games</div>
+          <div id="recent-games-loading" class="recent-games-loading">
+            <div class="recent-games-entry">
+              <div class="recent-games-entry-loading-line"></div>
+              <div class="recent-games-entry-loading-line"></div>
+              <div class="recent-games-entry-loading-picture"></div>
+              <div class="recent-games-entry-loading-line"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -52,3 +59,8 @@
 
   </div>
 </body>
+
+<!-- Put the script at the end of the page so execution doesn't begin until the --
+  -- dom has been parsed. This was suggested when using async to be a --
+  -- cross-browser compatible way of waiting for the dom to load. -->
+<script src="{{ '/static/recent_games.js'|url }}"></script>
