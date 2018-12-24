@@ -3,9 +3,10 @@
 <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Zilla+Slab" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<script src="{{ '/static/recent_games.js'|url }}"></script>
 <title>{% block title %}News{% endblock %} — boardgamejock</title>
 <body>
-  <div class="page-container">
+  <div class="body-content">
 
     <header>
       <div class="logo">
@@ -13,18 +14,16 @@
       </div>
       <div class="site-title"><a href="/">BoardGameJock</a></div>
       <div class="navbar-container">
-
         {# News header link is "active" if we're on the root page. #}
-        <div class="menu-item">
+        <div class="navbar-item">
           <a href="/" {% if this._path == '/' %} class="active" {% endif %}>News</a>
         </div>
-
         {# Other header links are active if we're on a child page of their heading. #}
         {% for href, title in [
           ['/blog', 'Blog'],
           ['/about', 'About']
           ] %}
-          <div class="menu-item">
+          <div class="navbar-item">
             <a href="{{ href|url }}" {% if this.is_child_of(href) %} class="active" {% endif %} >
               {{ title }}
             </a>
@@ -33,8 +32,18 @@
       </div>
     </header>
 
-    <div class="page">
-      {% block body %}{% endblock %}
+    <div class="content-and-sidebar">
+
+      <div class="page-content">
+        {% block body %}{% endblock %}
+      </div>
+
+      <div class="right-sidebar">
+        <div id="recent-games" class="recent-games">
+          <div class="sidebar-title">Recent Games</div>
+        </div>
+      </div>
+
     </div>
 
     <footer>
