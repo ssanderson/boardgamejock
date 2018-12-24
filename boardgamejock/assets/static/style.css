@@ -43,36 +43,38 @@ header, footer {
     padding-bottom: 10px;
 }
 
-div.content-and-sidebar {
+#content-and-sidebar {
     background: #f1fbfe;
     border: 2px solid black;
     display: flex;
-    flex: 1 1 auto;
-    min-height: 500px;
 }
 
 /* Main page content. */
-div.page-content {
+#page-content {
     width: 70%;
     padding: 20px;
 }
 
 /* Recent games sidebar. */
-div.right-sidebar {
+#right-sidebar {
     width: 30%;
     outline: 2px solid black;
-    overflow-y: scroll;
-    display: flex;
+
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
+
 }
 
 #recent-games {
     background: #f1fbfe;
     margin: auto;
     text-align: center;
+    overflow-y: scroll;
+
+    /*height will be set from JS to match the height of #page-content*/
+    min-height: 500px;
 }
 
 .recent-games-entry {
@@ -120,7 +122,7 @@ div.right-sidebar {
 }
 
 /* Paragraphs inside the main page. */
-div.page-content p {
+#page-content p {
     font-size: 12.5pt;
     line-height: 1.6;
     text-align: justify;
@@ -148,7 +150,7 @@ div.page-content p {
 }
 
 /* Images in non-blog post content. */
-div.page-content img {
+#page-content img {
     max-width: 35%;
     margin-right: 25px;
     display: block;
@@ -156,7 +158,7 @@ div.page-content img {
 }
 
 /* Images in blog posts. */
-div.page-content .blog-post img {
+#page-content .blog-post img {
     display: block;
     float: none;
 }

@@ -59,7 +59,7 @@ async function renderRecentGames(username) {
 
     // first, duplicate the loading game entry out a few times so that we can
     // see some placeholders
-    let recentGamesLoading = root.children[1];
+    let recentGamesLoading = root.children[0];
     let recentGamesLoadingEntry = recentGamesLoading.children[0];
     for (let ix = 0; ix < 9; ++ix) {
         recentGamesLoading.appendChild(recentGamesLoadingEntry.cloneNode(true));
@@ -115,4 +115,12 @@ async function renderRecentGames(username) {
     root.appendChild(tempRoot);
 }
 
+function setRecentGamesHeight() {
+  const targetHeight = document.getElementById('page-content').offsetHeight;
+  let recentGames = document.getElementById('recent-games');
+  recentGames.style.height = targetHeight + "px";
+}
+
+setRecentGamesHeight();
 renderRecentGames(uncle_bill);
+

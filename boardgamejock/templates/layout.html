@@ -31,15 +31,15 @@
       </div>
     </header>
 
-    <div class="content-and-sidebar">
+    <div id="content-and-sidebar">
 
-      <div class="page-content">
+      <div id="page-content">
         {% block body %}{% endblock %}
       </div>
 
-      <div class="right-sidebar">
+      <div id="right-sidebar">
+        <div class="sidebar-title">Recent Games</div>
         <div id="recent-games" class="recent-games">
-          <div class="sidebar-title">Recent Games</div>
           <div id="recent-games-loading" class="recent-games-loading">
             <div class="recent-games-entry">
               <div class="recent-games-entry-loading-line"></div>
