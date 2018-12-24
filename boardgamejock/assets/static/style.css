@@ -126,13 +126,6 @@ div.page-content p {
     text-align: justify;
 }
 
-/* Images inside of page bodies.*/
-div.page-content img {
-    max-width: 35%;
-    margin-right: 25px;
-    display: block;
-}
-
 .navbar-item {
     display: inline;
     margin: 0 8px 0 0;
@@ -153,6 +146,21 @@ div.page-content img {
     margin-bottom: 20px;
     clear: both;
 }
+
+/* Images in non-blog post content. */
+div.page-content img {
+    max-width: 35%;
+    margin-right: 25px;
+    display: block;
+    float: left;
+}
+
+/* Images in blog posts. */
+div.page-content .blog-post img {
+    display: block;
+    float: none;
+}
+
 
 a {
     color: #2a99b6;
