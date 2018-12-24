@@ -28,21 +28,18 @@ header, footer {
 /*Main site title*/
 .site-title {
     color: #169bbd;
-    font-size: 40px;
-    font-family: 'Zilla Slab', cursive;
+    font-size: 30px;
 }
 
 /*Per-page title.*/
-.page-title {
+.page-title, .sidebar-title {
     font-size: 32px;
     font-weight: bold;
-    font-family: 'Zilla Slab', cursive;
 }
 
 .sidebar-title {
-    font-size: 32px;
-    font-weight: bold;
-    font-family: 'Zilla Slab', cursive;
+    text-align: center;
+    margin: auto;
 }
 
 div.content-and-sidebar {
@@ -53,35 +50,48 @@ div.content-and-sidebar {
     min-height: 500px;
 }
 
-/*Main page content.*/
+/* Main page content. */
 div.page-content {
-    font-size: 13pt;
-    line-height: 1.6;
-    padding: 20px;
-    width: 75%;
-    text-align: justify;
+    width: 70%;
 }
 
+/* Recent games sidebar. */
 div.right-sidebar {
-    width: 25%;
+    width: 30%;
     outline: 2px solid black;
-    padding: 20px;
     overflow-y: scroll;
     display: flex;
 
 }
 
+div.page-content, div.right-sidebar {
+    padding: 20px;
+}
+
 #recent-games {
-    text-align: center;
     background: #f1fbfe;
+    margin: auto;
+    text-align: center;
 }
 
 .recent-games-entry {
-    border-bottom: 6px solid #daeef3;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+
+.recent-games-entry-title {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.recent-games-entry-date {
+    font-weight: bold;
 }
 
 .recent-games-entry img {
-    margin: 15px;
+    padding: 15px;
 }
 
 @keyframes pulse {
@@ -108,11 +118,17 @@ div.right-sidebar {
     animation: pulse 1s infinite ease-in-out;
 }
 
+/* Paragraphs inside the main page. */
+div.page-content p {
+    font-size: 12.5pt;
+    line-height: 1.6;
+    text-align: justify;
+}
+
 /* Images inside of page bodies.*/
 div.page-content img {
     max-width: 35%;
     margin-right: 25px;
-    float: left;
     display: block;
 }
 
@@ -133,7 +149,7 @@ div.page-content img {
 }
 
 .blog-post {
-    padding-top: 20px;
+    margin-bottom: 20px;
     clear: both;
 }
 

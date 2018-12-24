@@ -78,19 +78,19 @@ async function renderRecentGames(username) {
         tempRoot.appendChild(entryRoot);
         entryRoot.className = 'recent-games-entry';
 
-        let date = document.createElement('h3');
-        entryRoot.appendChild(date);
-        date.className = 'recent-games-entry-date';
-        date.innerHTML = play.date;
-
         let title = document.createElement('a');
         entryRoot.appendChild(title);
         title.className = 'recent-games-entry-title';
         title.href = play.link;
 
-        let titleName = document.createElement('h4')
+        let titleName = document.createElement('div')
         title.appendChild(titleName);
         title.innerHTML = play.game_name;
+
+        let date = document.createElement('div');
+        entryRoot.appendChild(date);
+        date.className = 'recent-games-entry-date';
+        date.innerHTML = play.date;
 
         let thumbnailDiv = document.createElement('div');
         entryRoot.appendChild(thumbnailDiv);
