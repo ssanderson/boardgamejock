@@ -40,6 +40,7 @@ header, footer {
 .sidebar-title {
     text-align: center;
     margin: auto;
+    padding-bottom: 10px;
 }
 
 div.content-and-sidebar {
@@ -53,6 +54,7 @@ div.content-and-sidebar {
 /* Main page content. */
 div.page-content {
     width: 70%;
+    padding: 20px;
 }
 
 /* Recent games sidebar. */
@@ -61,11 +63,10 @@ div.right-sidebar {
     outline: 2px solid black;
     overflow-y: scroll;
     display: flex;
-
-}
-
-div.page-content, div.right-sidebar {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #recent-games {
