@@ -51,18 +51,31 @@ function fetchPlays(username) {
 }
 
 async function renderRecentGames(username) {
-    let plays = await fetchPlays(username)
-
     let root = document.getElementById('recent-games');
     if (root === null) {
         console.log('missing recent games root div: "recent-games"');
         return;
     }
 
+    // first, duplicate the loading game entry out a few times so that we can
+    // see some placeholders
+    let recentGamesLoading = root.children[1];
+    let recentGamesLoadingEntry = recentGamesLoading.children[0];
+    for (let ix = 0; ix < 9; ++ix) {
+        recentGamesLoading.appendChild(recentGamesLoadingEntry.cloneNode(true));
+    }
+
+    // now that the placeholders are being shown, fetch the plays
+    let plays = await fetchPlays(username);
+
+    // fill a temp div so that we can swap all the placeholders with the real
+    // thing in one shot
+    let tempRoot = document.createElement('div');
+
     let ix = 0;
     for (let play of plays) {
         let entryRoot = document.createElement('div');
-        root.appendChild(entryRoot);
+        tempRoot.appendChild(entryRoot);
         entryRoot.className = 'recent-games-entry';
 
         let date = document.createElement('h3');
@@ -96,6 +109,10 @@ async function renderRecentGames(username) {
         comment.className = 'recent-games-comment';
         comment.innerHTML = play.comment;
     }
+
+    // swap the loading placeholder with the actual plays
+    root.removeChild(recentGamesLoading);
+    root.appendChild(tempRoot);
 }
 
 renderRecentGames(uncle_bill);
