@@ -147,6 +147,7 @@ header, footer {
 .blog-post {
     margin-bottom: 20px;
     clear: both;
+    border-bottom: 2px solid black;
 }
 
 /* Images in non-blog post content. */
