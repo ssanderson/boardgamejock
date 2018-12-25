@@ -50,7 +50,10 @@ function fetchPlays(username) {
     });
 }
 
-async function renderRecentGames(username) {
+async function renderRecentGames(playsPromise) {
+    let sidebar = document.getElementById('right-sidebar');
+    sidebar.style.height = sidebar.scrollHeight + "px";
+
     let root = document.getElementById('recent-games');
     if (root === null) {
         console.log('missing recent games root div: "recent-games"');
@@ -65,8 +68,7 @@ async function renderRecentGames(username) {
         recentGamesLoading.appendChild(recentGamesLoadingEntry.cloneNode(true));
     }
 
-    // now that the placeholders are being shown, fetch the plays
-    let plays = await fetchPlays(username);
+    let plays = await playsPromise;
 
     // fill a temp div so that we can swap all the placeholders with the real
     // thing in one shot
@@ -115,11 +117,36 @@ async function renderRecentGames(username) {
     root.appendChild(tempRoot);
 }
 
-function setRecentGamesHeight() {
-  let sidebar = document.getElementById('right-sidebar');
-  sidebar.style.height = sidebar.scrollHeight + "px";
+function asyncYield() {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve();
+        });
+    });
 }
 
-setRecentGamesHeight();
-renderRecentGames(uncle_bill);
+async function waitForImages() {
+    let waiting = {};
+    for (let img of document.querySelectorAll('img')) {
+        let dummyImg = new Image();
+        dummyImg.onload = function() {
+            delete waiting[dummyImg];
+        };
+        dummyImg.src = img.src;
+        if (!dummyImg.complete) {
+            waiting[dummyImg] = null;
+        }
+    }
 
+    while (Object.keys(waiting).length) {
+        await asyncYield();
+    }
+}
+
+
+let plays = fetchPlays(uncle_bill);
+document.addEventListener('DOMContentLoaded', async function(event) {
+    await waitForImages().then(async function() {
+        await renderRecentGames(plays)
+    });
+})
