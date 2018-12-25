@@ -116,9 +116,8 @@ async function renderRecentGames(username) {
 }
 
 function setRecentGamesHeight() {
-  const targetHeight = document.getElementById('page-content').offsetHeight;
-  let recentGames = document.getElementById('recent-games');
-  recentGames.style.height = targetHeight + "px";
+  let sidebar = document.getElementById('right-sidebar');
+  sidebar.style.height = sidebar.scrollHeight + "px";
 }
 
 setRecentGamesHeight();

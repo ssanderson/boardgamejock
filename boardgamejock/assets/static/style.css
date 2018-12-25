@@ -6,6 +6,7 @@ body {
 .body-content {
     width: 1060px;
     margin: auto;
+    outline: 2px solid black;
 }
 
 header {
@@ -45,8 +46,9 @@ header, footer {
 
 #content-and-sidebar {
     background: #f1fbfe;
-    border: 2px solid black;
+    outline: 2px solid black;
     display: flex;
+    min-height: 700px;
 }
 
 /* Main page content. */
@@ -65,16 +67,13 @@ header, footer {
     padding-left: 20px;
     padding-right: 20px;
 
+    overflow-y: scroll;
 }
 
 #recent-games {
     background: #f1fbfe;
     margin: auto;
     text-align: center;
-    overflow-y: scroll;
-
-    /*height will be set from JS to match the height of #page-content*/
-    min-height: 500px;
 }
 
 .recent-games-entry {
@@ -141,7 +140,6 @@ header, footer {
 
 .pagination {
     clear: both;
-    padding-top: 20px;
 }
 
 .blog-post {
