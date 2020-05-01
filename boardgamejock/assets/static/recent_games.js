@@ -51,8 +51,6 @@ function fetchPlays(username) {
 }
 
 async function renderRecentGames(playsPromise) {
-    let sidebar = document.getElementById('right-sidebar');
-    sidebar.style.height = sidebar.scrollHeight + "px";
 
     let root = document.getElementById('recent-games');
     if (root === null) {

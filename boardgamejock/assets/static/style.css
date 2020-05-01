@@ -62,18 +62,18 @@ header, footer {
     width: 30%;
     outline: 2px solid black;
 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    overflow-y: scroll;
+    padding: 20px;
 }
 
 #recent-games {
     background: #f1fbfe;
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
+}
+
+#recent-games-scrollarea {
+    height: 100%;
+    overflow: scroll;
 }
 
 .recent-games-entry {
